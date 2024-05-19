@@ -8,13 +8,14 @@ const createProducts = async (amount) => {
 
     const data = JSON.parse(dataPoducts);
 
-    for (let i = 0; i < amount; i = +1) {
+    for (let i = 0; i < amount; i += 1) {
       data.push(createFakeProduct());
     }
 
     const newData = JSON.stringify(data, null, 2);
 
     await fs.writeFile(PATH_URL, newData);
+    console.log(`Products created success`);
   } catch (error) {
     console.log(error);
   }

@@ -5,7 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-	"create": "node src/scripts/createProducts",
+    "create": "node src/scripts/createProducts",
+    "log": "node src/scripts/logProducts.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,5 +14,8 @@
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^8.4.1"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0"
   }
 }
