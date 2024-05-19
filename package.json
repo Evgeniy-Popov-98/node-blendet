@@ -9,6 +9,8 @@
     "log": "node src/scripts/logProducts.js",
     "logExpensive": "node src/scripts/logExpensiveProducts.js",
     "totalPrice": "node src/scripts/logTotalPrice.js",
+    "clear": "node src/scripts/deletAllData.js",
+    "getRandom": "node src/scripts/removeRandomProduct.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
