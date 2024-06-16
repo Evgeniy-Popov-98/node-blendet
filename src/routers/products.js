@@ -6,12 +6,18 @@ import {
   getProductByIdController,
   deleteProductByIdController,
 } from "../controllers/products.js";
+import { valideBody } from "../utils/validateBody.js";
+import { createProductsSchema } from "../validation/createProductsSchema.js";
 
 const productsRouter = Router();
 
 productsRouter.get("/", ctrlWrapper(getAllProductsController));
 
-productsRouter.post("/", ctrlWrapper(postProductsController));
+productsRouter.post(
+  "/",
+  valideBody(createProductsSchema),
+  ctrlWrapper(postProductsController)
+);
 
 productsRouter.get("/:productId", ctrlWrapper(getProductByIdController));
 
