@@ -1,17 +1,12 @@
-import { loginUser, registerUser } from '../services/users.js';
+import createHttpError from 'http-errors';
+import { createUser, findUserByEmail } from '../services/users.js';
 
-export const registerUserController = async (req, res) => {
-  const user = await registerUser(req.body);
-  res.status(201).json({ name: user.name, email: user.email });
-};
+export const registerUserController = async (req, res, next) => {
+  const isExisting = await findUserByEmail(req.body.email);
 
-export const loginUserController = async (req, res) => {
-  const session = await loginUser(req.body);
+  if (isExisting) {
+    throw createHttpError(409, 'User with such email already exists.');
+  }
 
-  const { userId, accessToken, refreshToken } = session;
-
-  res.cookie('sessionId', userId);
-  res.cookie('sessionToken', refreshToken);
-
-  res.json({ accessToken });
+  const user = await createUser(req.body);
 };

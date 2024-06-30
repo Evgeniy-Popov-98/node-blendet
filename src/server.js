@@ -1,13 +1,12 @@
-import express from "express";
-import cors from "cors";
+import express from 'express';
+import cors from 'cors';
 
-import { env } from "./utils/env.js";
-import { notFoundHandler } from "./middlewares/notFoundHandler.js";
-import { errorHandler } from "./middlewares/errorHandler.js";
-import productsRouter from "./routers/products.js";
-import authRouter from "./routers/auth.js";
+import { env } from './utils/env.js';
+import { notFoundHandler } from './middlewares/notFoundHandler.js';
+import { errorHandler } from './middlewares/errorHandler.js';
+import authRouter from './routers/auth.js';
 
-const PORT = Number(env("PORT", "3000"));
+const PORT = Number(env('PORT', '3000'));
 
 export const setupServer = () => {
   const app = express();
@@ -15,10 +14,9 @@ export const setupServer = () => {
   app.use(express.json());
   app.use(cors());
 
-  app.use("/products", productsRouter);
-  app.use("/users", authRouter);
+  app.use('/users', authRouter);
 
-  app.use("*", notFoundHandler);
+  app.use('*', notFoundHandler);
 
   app.use(errorHandler);
 
