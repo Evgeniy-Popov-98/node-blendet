@@ -9,7 +9,7 @@ export const registerUserController = async (req, res, next) => {
   }
 
   const user = await createUser(req.body);
-
+  console.log(user);
   res.status(201).json({
     user: { name: user.name, email: user.email },
     token: user.token,
